@@ -369,16 +369,6 @@
   .tab-panel{display:none;margin-top:32px;}
   .tab-panel.active{display:block;}
 
-  /* mode toggle (Con producción / Remoto) */
-  .mode-toggle{
-    display:inline-flex;border:1px solid var(--line);border-radius:100px;padding:4px;gap:4px;margin-bottom:16px;
-  }
-  .mode-btn{
-    background:none;border:none;color:var(--cream-dim);padding:9px 20px;border-radius:100px;
-    font-size:13.5px;font-family:'Inter';cursor:pointer;transition:all .25s ease;
-  }
-  .mode-btn.active{background:var(--lime);color:#111;font-weight:600;}
-
   /* plan cards */
   .plans-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;margin-bottom:36px;}
   @media(max-width:900px){.plans-grid{grid-template-columns:1fr;}}
@@ -393,11 +383,7 @@
     font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:100px;font-family:'JetBrains Mono';
   }
   .plan-name{font-family:'Hanken Grotesk';font-weight:700;font-size:19px;color:var(--cream);margin-bottom:14px;}
-  .plan-price{font-family:'JetBrains Mono';font-size:34px;color:var(--lime);margin-bottom:14px;}
-  .plan-price span:first-child{font-size:20px;vertical-align:top;opacity:0.7;}
-  .price-amount{display:inline-block;transition:opacity .2s ease, transform .2s ease;}
-  .price-amount.swap{opacity:0;transform:translateY(6px);}
-  .plan-desc{color:var(--cream-dim);font-size:14px;margin-bottom:22px;min-height:38px;}
+  .plan-desc{color:var(--cream-dim);font-size:14px;margin-bottom:22px;}
   .plan-cta{
     display:inline-block;border:1px solid var(--line);color:var(--cream);padding:11px 26px;border-radius:100px;
     font-size:14px;transition:all .2s ease;
@@ -407,18 +393,13 @@
   /* extras list */
   .extras-grid{display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:14px;overflow:hidden;border:1px solid var(--line);}
   .extra-item{
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    display:flex;align-items:center;gap:20px;
     background:var(--bg-soft);padding:18px 22px;
   }
   .extra-name{font-weight:600;color:var(--cream);font-size:15px;}
   .extra-desc{color:var(--cream-dim);font-size:13.5px;margin-top:3px;}
-  .extra-price{
-    font-family:'JetBrains Mono';font-weight:500;color:var(--lime);white-space:nowrap;font-size:15px;
-    transition:opacity .2s ease;
-  }
   @media(max-width:560px){
     .extra-item{flex-direction:column;align-items:flex-start;gap:8px;}
-    .extra-price{font-size:16px;}
   }
   .price-table{width:100%;border-collapse:collapse;}
   .price-table th{
@@ -428,19 +409,14 @@
   .price-table td{
     padding:18px 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:15px;
   }
-  .price-table td.svc{color:var(--cream);font-weight:600;width:26%;}
-  .price-table td.desc{color:var(--cream-dim);width:50%;padding-right:20px;}
+  .price-table td.svc{color:var(--cream);font-weight:600;width:30%;}
+  .price-table td.desc{color:var(--cream-dim);width:70%;padding-right:20px;}
   .price-table td.price{color:var(--lime);font-family:'JetBrains Mono';font-weight:500;white-space:nowrap;text-align:right;}
   .table-note{margin-top:18px;font-size:13px;color:var(--cream-dim);font-family:'JetBrains Mono';}
   @media(max-width:700px){
     .price-table thead{display:none;}
     .price-table tr{display:flex;flex-direction:column;padding:18px 0;border-bottom:1px solid var(--line);gap:6px;}
     .price-table td{border-bottom:none;padding:0;width:100% !important;text-align:left !important;}
-    .price-table td.price{color:var(--lime);font-size:16px;}
-    .price-table td.price[data-label]::before{
-      content:attr(data-label);display:block;font-family:'JetBrains Mono';font-size:10.5px;
-      text-transform:uppercase;letter-spacing:0.06em;color:var(--cream-dim);margin-bottom:2px;
-    }
   }
 
   /* ---------- contacto ---------- */
@@ -474,7 +450,7 @@
     <div class="nav-links">
       <a href="#servicios">Servicios</a>
       <a href="#clientes">Clientes</a>
-      <a href="#tarifario">Tarifario</a>
+      <a href="#tarifario">Servicios</a>
     </div>
     <a class="nav-cta" href="#contacto">Conversemos</a>
     <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
@@ -483,7 +459,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#servicios">Servicios</a>
     <a href="#clientes">Clientes</a>
-    <a href="#tarifario">Tarifario</a>
+    <a href="#tarifario">Servicios</a>
     <a href="#contacto" style="color:var(--lime)">Conversemos</a>
   </div>
 
@@ -687,9 +663,10 @@
   <!-- TARIFARIO -->
   <section class="wrap" id="tarifario">
     <div class="sec-head reveal">
-      <span class="sec-eyebrow">Tarifario</span>
-      <h2>Precios claros, sin sorpresas</h2>
-      <p>Valores netos por boleta de honorarios + IVA. Todo es conversable: mientras más servicios contrates, mejor se acomoda tu presupuesto.</p>
+      <span class="sec-eyebrow">Servicios</span>
+      <h2>Un plan a la medida de tu marca</h2>
+      <p>Cada proyecto es distinto — arma tu combinación de servicios y te preparamos una propuesta a tu medida, sin plantillas genéricas.</p>
+      <a href="#contacto" class="btn-primary" style="margin-top:24px;"><span>Cotiza tu proyecto</span> ✱</a>
     </div>
 
     <div class="tabs reveal" id="tabs">
@@ -703,137 +680,124 @@
 
     <!-- RRSS -->
     <div class="tab-panel active reveal" data-panel="rrss">
-      <div class="mode-toggle" role="tablist" aria-label="Modalidad de precio">
-        <button class="mode-btn active" data-mode="produccion">Con producción</button>
-        <button class="mode-btn" data-mode="remoto">Remoto</button>
-      </div>
-      <p class="table-note" id="modeHint" style="margin:0 0 30px 0;">Grabamos y fotografiamos nosotros mismos.</p>
+      <p class="table-note" style="margin:0 0 30px 0;">✱ Cada plan está disponible en dos modalidades: <strong style="color:var(--cream)">con producción</strong> (grabamos/fotografiamos nosotros) o <strong style="color:var(--cream)">remoto</strong> (tú nos envías el material y nosotros editamos, redactamos y programamos).</p>
 
       <div class="plans-grid">
         <div class="plan-card">
           <div class="plan-name">Plan starter</div>
-          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="350.000" data-remoto="280.000">350.000</span></div>
           <div class="plan-desc">2 reels, 2 posts, 2 historias · 6 contenidos total</div>
-          <a href="#contacto" class="plan-cta">Elegir plan</a>
+          <a href="#contacto" class="plan-cta">Cotizar este plan</a>
         </div>
         <div class="plan-card featured">
           <span class="plan-tag">Más pedido</span>
           <div class="plan-name">Plan medium</div>
-          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="450.000" data-remoto="360.000">450.000</span></div>
           <div class="plan-desc">2 reels, 4 posts, 6 historias · 12 contenidos total</div>
-          <a href="#contacto" class="plan-cta">Elegir plan</a>
+          <a href="#contacto" class="plan-cta">Cotizar este plan</a>
         </div>
         <div class="plan-card">
           <div class="plan-name">Plan full</div>
-          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="600.000" data-remoto="480.000">600.000</span></div>
           <div class="plan-desc">3 reels, 7 posts, 10 historias · 20 contenidos total</div>
-          <a href="#contacto" class="plan-cta">Elegir plan</a>
+          <a href="#contacto" class="plan-cta">Cotizar este plan</a>
         </div>
       </div>
 
       <div class="extras-grid">
         <div class="extra-item">
           <div><div class="extra-name">Post adicional</div><div class="extra-desc">Gráfico o carrusel — diseño + redacción copy</div></div>
-          <div class="extra-price" data-static="50.000">$50.000</div>
         </div>
         <div class="extra-item">
           <div><div class="extra-name">Reel adicional</div><div class="extra-desc">Edición + música + subtítulos</div></div>
-          <div class="extra-price" data-produccion="75.000" data-remoto="60.000">$75.000</div>
         </div>
         <div class="extra-item">
           <div><div class="extra-name">Community Management</div><div class="extra-desc">Respuesta DM + comentarios · lunes a viernes</div></div>
-          <div class="extra-price" data-static="150.000">$150.000</div>
         </div>
         <div class="extra-item">
           <div><div class="extra-name">Plan único (LinkedIn)</div><div class="extra-desc">9 contenidos (posts)</div></div>
-          <div class="extra-price" data-static="500.000">$500.000</div>
         </div>
         <div class="extra-item">
           <div><div class="extra-name">Community Management (LinkedIn)</div><div class="extra-desc">Respuesta DM + comentarios · lunes a viernes</div></div>
-          <div class="extra-price" data-static="150.000">$150.000</div>
         </div>
       </div>
-      <p class="table-note">* Valores CLP + IVA · Los ítems marcados con precio fijo no varían según la modalidad</p>
     </div>
 
     <!-- PRODUCCION -->
     <div class="tab-panel reveal" data-panel="prod">
       <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Precio</th></tr></thead>
+        <thead><tr><th>Servicio</th><th>Descripción</th></tr></thead>
         <tbody>
-          <tr><td class="svc">Jornada de fotos</td><td class="desc">50 fotos editadas — preproducción, 3 horas de sesión, postproducción y entrega</td><td class="price">$280.000</td></tr>
-          <tr><td class="svc">Reel</td><td class="desc">Grabación + edición (incluye copies)</td><td class="price">$90.000</td></tr>
-          <tr><td class="svc">Contenido con modelo</td><td class="desc">Niños/adultos — incluye casting y coordinación (pago a modelos generalmente a canje)</td><td class="price">Desde $80.000</td></tr>
-          <tr><td class="svc">Servicio drone</td><td class="desc">Coordinación previa 5 días — 10 fotografías aéreas + 1 video de 1 minuto editado</td><td class="price">Desde $150.000</td></tr>
+          <tr><td class="svc">Jornada de fotos</td><td class="desc">50 fotos editadas — preproducción, 3 horas de sesión, postproducción y entrega</td></tr>
+          <tr><td class="svc">Reel</td><td class="desc">Grabación + edición (incluye copies)</td></tr>
+          <tr><td class="svc">Contenido con modelo</td><td class="desc">Niños/adultos — incluye casting y coordinación (pago a modelos generalmente a canje)</td></tr>
+          <tr><td class="svc">Servicio drone</td><td class="desc">Coordinación previa 5 días — 10 fotografías aéreas + 1 video de 1 minuto editado</td></tr>
         </tbody>
       </table>
-      <p class="table-note">* Valores fuera de planes de redes sociales · CLP + IVA</p>
+      <a href="#contacto" class="plan-cta" style="margin-top:8px;display:inline-block;">Cotizar este servicio</a>
     </div>
 
     <!-- PAGINAS WEB -->
     <div class="tab-panel reveal" data-panel="web">
       <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Precio</th></tr></thead>
+        <thead><tr><th>Servicio</th><th>Descripción</th></tr></thead>
         <tbody>
-          <tr><td class="svc">Landing Page Esencial</td><td class="desc">1 página, diseño a medida, responsive, formulario de contacto</td><td class="price">$180.000</td></tr>
-          <tr><td class="svc">Landing Page Conversión</td><td class="desc">1 página, copywriting, testimonios/VSL, SEO on-page</td><td class="price">$420.000</td></tr>
-          <tr><td class="svc">Sitio Corporativo</td><td class="desc">5–6 páginas, WordPress, diseño a medida, SEO técnico</td><td class="price">$950.000</td></tr>
-          <tr><td class="svc">Ecommerce Shopify Básico</td><td class="desc">Catálogo hasta 30 productos, checkout, 1 método de envío</td><td class="price">$750.000</td></tr>
-          <tr><td class="svc">Ecommerce Shopify a Medida</td><td class="desc">Catálogo amplio, integraciones (envíos, WhatsApp, etc.), diseño 100% custom</td><td class="price">$1.200.000</td></tr>
-          <tr><td class="svc">Plataforma a Medida</td><td class="desc">Desarrollo custom, auth, panel admin, lógica de pagos/liquidación</td><td class="price">Desde $2.500.000</td></tr>
-          <tr><td class="svc">Mantención — Plan Esencial</td><td class="desc">Actualizaciones, soporte básico, backups</td><td class="price">$85.000/mes</td></tr>
-          <tr><td class="svc">Mantención — Plan Completo</td><td class="desc">Soporte prioritario, cambios de contenido, monitoreo</td><td class="price">$150.000/mes</td></tr>
-          <tr><td class="svc">Tarifa hora</td><td class="desc">Trabajo puntual fuera de proyecto cerrado</td><td class="price">$40.000/hora</td></tr>
+          <tr><td class="svc">Landing Page Esencial</td><td class="desc">1 página, diseño a medida, responsive, formulario de contacto</td></tr>
+          <tr><td class="svc">Landing Page Conversión</td><td class="desc">1 página, copywriting, testimonios/VSL, SEO on-page</td></tr>
+          <tr><td class="svc">Sitio Corporativo</td><td class="desc">5–6 páginas, WordPress, diseño a medida, SEO técnico</td></tr>
+          <tr><td class="svc">Ecommerce Shopify Básico</td><td class="desc">Catálogo hasta 30 productos, checkout, 1 método de envío</td></tr>
+          <tr><td class="svc">Ecommerce Shopify a Medida</td><td class="desc">Catálogo amplio, integraciones (envíos, WhatsApp, etc.), diseño 100% custom</td></tr>
+          <tr><td class="svc">Plataforma a Medida</td><td class="desc">Desarrollo custom, auth, panel admin, lógica de pagos/liquidación</td></tr>
+          <tr><td class="svc">Mantención — Plan Esencial</td><td class="desc">Actualizaciones, soporte básico, backups</td></tr>
+          <tr><td class="svc">Mantención — Plan Completo</td><td class="desc">Soporte prioritario, cambios de contenido, monitoreo</td></tr>
+          <tr><td class="svc">Tarifa hora</td><td class="desc">Trabajo puntual fuera de proyecto cerrado</td></tr>
         </tbody>
       </table>
-      <p class="table-note">* Valores CLP + IVA</p>
+      <a href="#contacto" class="plan-cta" style="margin-top:8px;display:inline-block;">Cotizar este servicio</a>
     </div>
 
     <!-- ESTRATEGIA -->
     <div class="tab-panel reveal" data-panel="estr">
       <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Precio</th></tr></thead>
+        <thead><tr><th>Servicio</th><th>Descripción</th></tr></thead>
         <tbody>
-          <tr><td class="svc">Optimización web y SEO</td><td class="desc">Auditoría y optimización inicial + gestión mensual (incluye contenido, backlinks)</td><td class="price">$300.000</td></tr>
-          <tr><td class="svc">Contenidos blog</td><td class="desc">3 contenidos con SEO mensual</td><td class="price">$200.000</td></tr>
-          <tr><td class="svc">Marketing de influencers</td><td class="desc">Gestión de 2 contenidos mensuales (no incluye pago o canje)</td><td class="price">$150.000</td></tr>
-          <tr><td class="svc">Construcción de marca</td><td class="desc">2 propuestas + justificación creativa y storytelling de marca</td><td class="price">$350.000</td></tr>
-          <tr><td class="svc">Producción de eventos</td><td class="desc">Pre producción, apoyo comunicacional, gestión del evento y post producción</td><td class="price">Desde $500.000</td></tr>
-          <tr><td class="svc">Gestión de prensa</td><td class="desc">Gestión de medios de comunicación</td><td class="price">Desde $400.000</td></tr>
-          <tr><td class="svc">Apoyo comercial</td><td class="desc">Asesoría de modelos de negocios, networking, enlaces comerciales</td><td class="price">Desde $300.000</td></tr>
-          <tr><td class="svc">Contenido general</td><td class="desc">Investigación y redacción de contenido</td><td class="price">Desde $150.000</td></tr>
-          <tr><td class="svc">Email marketing</td><td class="desc">Segmentaciones, contenidos y diseño para un correo</td><td class="price">$100.000</td></tr>
+          <tr><td class="svc">Optimización web y SEO</td><td class="desc">Auditoría y optimización inicial + gestión mensual (incluye contenido, backlinks)</td></tr>
+          <tr><td class="svc">Contenidos blog</td><td class="desc">3 contenidos con SEO mensual</td></tr>
+          <tr><td class="svc">Marketing de influencers</td><td class="desc">Gestión de 2 contenidos mensuales (no incluye pago o canje)</td></tr>
+          <tr><td class="svc">Construcción de marca</td><td class="desc">2 propuestas + justificación creativa y storytelling de marca</td></tr>
+          <tr><td class="svc">Producción de eventos</td><td class="desc">Pre producción, apoyo comunicacional, gestión del evento y post producción</td></tr>
+          <tr><td class="svc">Gestión de prensa</td><td class="desc">Gestión de medios de comunicación</td></tr>
+          <tr><td class="svc">Apoyo comercial</td><td class="desc">Asesoría de modelos de negocios, networking, enlaces comerciales</td></tr>
+          <tr><td class="svc">Contenido general</td><td class="desc">Investigación y redacción de contenido</td></tr>
+          <tr><td class="svc">Email marketing</td><td class="desc">Segmentaciones, contenidos y diseño para un correo</td></tr>
         </tbody>
       </table>
-      <p class="table-note">* Valores CLP + IVA</p>
+      <a href="#contacto" class="plan-cta" style="margin-top:8px;display:inline-block;">Cotizar este servicio</a>
     </div>
 
     <!-- DISEÑO -->
     <div class="tab-panel reveal" data-panel="dis">
       <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Precio</th></tr></thead>
+        <thead><tr><th>Servicio</th><th>Descripción</th></tr></thead>
         <tbody>
-          <tr><td class="svc">Logo básico</td><td class="desc">2 propuestas + archivos editables</td><td class="price">$190.000</td></tr>
-          <tr><td class="svc">Manual de marca mini</td><td class="desc">Logo + paleta de colores + tipografías + usos recomendados</td><td class="price">$280.000</td></tr>
-          <tr><td class="svc">Kit de gráficas para RRSS</td><td class="desc">10 templates editables en Canva</td><td class="price">$100.000</td></tr>
-          <tr><td class="svc">PDF corporativo / presentaciones</td><td class="desc">Diseño de 5–7 páginas (no incluye contenido)</td><td class="price">Desde $100.000</td></tr>
-          <tr><td class="svc">Servicios de diseño mensual</td><td class="desc">40 horas</td><td class="price">$800.000</td></tr>
+          <tr><td class="svc">Logo básico</td><td class="desc">2 propuestas + archivos editables</td></tr>
+          <tr><td class="svc">Manual de marca mini</td><td class="desc">Logo + paleta de colores + tipografías + usos recomendados</td></tr>
+          <tr><td class="svc">Kit de gráficas para RRSS</td><td class="desc">10 templates editables en Canva</td></tr>
+          <tr><td class="svc">PDF corporativo / presentaciones</td><td class="desc">Diseño de 5–7 páginas (no incluye contenido)</td></tr>
+          <tr><td class="svc">Servicios de diseño mensual</td><td class="desc">40 horas</td></tr>
         </tbody>
       </table>
-      <p class="table-note">* Valores CLP + IVA</p>
+      <a href="#contacto" class="plan-cta" style="margin-top:8px;display:inline-block;">Cotizar este servicio</a>
     </div>
 
     <!-- CAMPAÑAS -->
     <div class="tab-panel reveal" data-panel="camp">
       <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Precio</th></tr></thead>
+        <thead><tr><th>Servicio</th><th>Descripción</th></tr></thead>
         <tbody>
-          <tr><td class="svc">Campaña creativa</td><td class="desc">Concepto + piezas gráficas + copies + reels</td><td class="price">$500.000</td></tr>
-          <tr><td class="svc">Lanzamiento de producto/marca</td><td class="desc">Plan completo + contenidos + difusión</td><td class="price">Desde $650.000</td></tr>
-          <tr><td class="svc">Campañas de performance</td><td class="desc">Optimización de ads en Meta y Google Ads</td><td class="price">Desde $150.000</td></tr>
+          <tr><td class="svc">Campaña creativa</td><td class="desc">Concepto + piezas gráficas + copies + reels</td></tr>
+          <tr><td class="svc">Lanzamiento de producto/marca</td><td class="desc">Plan completo + contenidos + difusión</td></tr>
+          <tr><td class="svc">Campañas de performance</td><td class="desc">Optimización de ads en Meta y Google Ads</td></tr>
         </tbody>
       </table>
-      <p class="table-note">* Valores CLP + IVA</p>
+      <a href="#contacto" class="plan-cta" style="margin-top:8px;display:inline-block;">Cotizar este servicio</a>
     </div>
   </section>
 
@@ -869,34 +833,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // RRSS price mode toggle (Con producción / Remoto)
-  const modeBtns = document.querySelectorAll('.mode-btn');
-  const modeHint = document.getElementById('modeHint');
-  const hints = {
-    produccion: 'Grabamos y fotografiamos nosotros mismos.',
-    remoto: 'Tú nos envías el material y nosotros editamos, redactamos el copy y programamos la publicación.'
-  };
-  function applyMode(mode) {
-    document.querySelectorAll('.price-amount, .extra-price').forEach(el => {
-      const val = el.dataset[mode] || el.dataset.static;
-      if (!val) return;
-      el.classList.add('swap');
-      setTimeout(() => {
-        el.textContent = el.classList.contains('price-amount') ? val : '$' + val;
-        el.style.color = mode === 'remoto' && el.dataset.remoto ? 'var(--lavender)' : (el.classList.contains('extra-price') ? 'var(--lime)' : '');
-        el.classList.remove('swap');
-      }, 150);
-    });
-    if (modeHint) modeHint.textContent = hints[mode];
-  }
-  modeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      modeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      applyMode(btn.dataset.mode);
-    });
-  });
 
   // tarifario tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
