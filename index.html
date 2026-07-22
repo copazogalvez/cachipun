@@ -368,6 +368,58 @@
   .tab-btn.active{background:var(--lime);color:#111;border-color:var(--lime);font-weight:600;}
   .tab-panel{display:none;margin-top:32px;}
   .tab-panel.active{display:block;}
+
+  /* mode toggle (Con producción / Remoto) */
+  .mode-toggle{
+    display:inline-flex;border:1px solid var(--line);border-radius:100px;padding:4px;gap:4px;margin-bottom:16px;
+  }
+  .mode-btn{
+    background:none;border:none;color:var(--cream-dim);padding:9px 20px;border-radius:100px;
+    font-size:13.5px;font-family:'Inter';cursor:pointer;transition:all .25s ease;
+  }
+  .mode-btn.active{background:var(--lime);color:#111;font-weight:600;}
+
+  /* plan cards */
+  .plans-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;margin-bottom:36px;}
+  @media(max-width:900px){.plans-grid{grid-template-columns:1fr;}}
+  .plan-card{
+    position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;
+    background:var(--bg-soft);text-align:center;transition:border-color .25s ease, transform .25s ease;
+  }
+  .plan-card:hover{border-color:var(--lime);transform:translateY(-4px);}
+  .plan-card.featured{border-color:var(--lime);background:#171e0a;}
+  .plan-tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--lime);color:#111;
+    font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:100px;font-family:'JetBrains Mono';
+  }
+  .plan-name{font-family:'Hanken Grotesk';font-weight:700;font-size:19px;color:var(--cream);margin-bottom:14px;}
+  .plan-price{font-family:'JetBrains Mono';font-size:34px;color:var(--lime);margin-bottom:14px;}
+  .plan-price span:first-child{font-size:20px;vertical-align:top;opacity:0.7;}
+  .price-amount{display:inline-block;transition:opacity .2s ease, transform .2s ease;}
+  .price-amount.swap{opacity:0;transform:translateY(6px);}
+  .plan-desc{color:var(--cream-dim);font-size:14px;margin-bottom:22px;min-height:38px;}
+  .plan-cta{
+    display:inline-block;border:1px solid var(--line);color:var(--cream);padding:11px 26px;border-radius:100px;
+    font-size:14px;transition:all .2s ease;
+  }
+  .plan-cta:hover{background:var(--lime);border-color:var(--lime);color:#111;}
+
+  /* extras list */
+  .extras-grid{display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:14px;overflow:hidden;border:1px solid var(--line);}
+  .extra-item{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    background:var(--bg-soft);padding:18px 22px;
+  }
+  .extra-name{font-weight:600;color:var(--cream);font-size:15px;}
+  .extra-desc{color:var(--cream-dim);font-size:13.5px;margin-top:3px;}
+  .extra-price{
+    font-family:'JetBrains Mono';font-weight:500;color:var(--lime);white-space:nowrap;font-size:15px;
+    transition:opacity .2s ease;
+  }
+  @media(max-width:560px){
+    .extra-item{flex-direction:column;align-items:flex-start;gap:8px;}
+    .extra-price{font-size:16px;}
+  }
   .price-table{width:100%;border-collapse:collapse;}
   .price-table th{
     text-align:left;font-family:'JetBrains Mono';font-size:12px;text-transform:uppercase;
@@ -582,7 +634,7 @@
   <section class="wrap" id="clientes">
     <div class="sec-head reveal">
       <span class="sec-eyebrow">Nuestros clientes</span>
-      <h2>Algunas marcas que confían — y siguen confiando — en nosotros</h2>
+      <h2>Algunas marcas que confían en nosotros</h2>
     </div>
     <div class="clients-feature">
       <div class="client-card reveal">
@@ -651,21 +703,57 @@
 
     <!-- RRSS -->
     <div class="tab-panel active reveal" data-panel="rrss">
-      <p class="table-note" style="margin:0 0 18px 0;">✱ <strong style="color:var(--cream)">Con producción</strong>: grabamos/fotografiamos nosotros. <strong style="color:var(--cream)">Remoto</strong>: tú nos envías el material y nosotros editamos, redactamos el copy y programamos la publicación — ideal si estás fuera de La Serena.</p>
-      <table class="price-table">
-        <thead><tr><th>Servicio</th><th>Descripción</th><th style="text-align:right">Con producción</th><th style="text-align:right">Remoto</th></tr></thead>
-        <tbody>
-          <tr><td class="svc">Plan starter</td><td class="desc">4 contenidos (2 reels y 2 posts) + 2 historias · 6 contenidos total</td><td class="price" data-label="Con producción">$350.000</td><td class="price" data-label="Remoto" style="color:var(--lavender)">$200.000</td></tr>
-          <tr><td class="svc">Plan medium</td><td class="desc">6 contenidos (2 reels y 4 posts) + 6 historias · 12 contenidos total</td><td class="price" data-label="Con producción">$450.000</td><td class="price" data-label="Remoto" style="color:var(--lavender)">$260.000</td></tr>
-          <tr><td class="svc">Plan full</td><td class="desc">10 contenidos (3 reels y 7 posts) + 10 historias · 20 contenidos total</td><td class="price" data-label="Con producción">$600.000</td><td class="price" data-label="Remoto" style="color:var(--lavender)">$340.000</td></tr>
-          <tr><td class="svc">Post adicional</td><td class="desc">Gráfico o carrusel — diseño + redacción copy</td><td class="price" colspan="2" style="text-align:right">$50.000</td></tr>
-          <tr><td class="svc">Reel adicional</td><td class="desc">Edición + música + subtítulos</td><td class="price" data-label="Con producción">$75.000</td><td class="price" data-label="Remoto" style="color:var(--lavender)">$45.000</td></tr>
-          <tr><td class="svc">Community Management</td><td class="desc">Respuesta DM + comentarios · lunes a viernes, horario laboral</td><td class="price" colspan="2" style="text-align:right">$150.000</td></tr>
-          <tr><td class="svc">Plan único (LinkedIn)</td><td class="desc">9 contenidos (posts)</td><td class="price" colspan="2" style="text-align:right">$500.000</td></tr>
-          <tr><td class="svc">Community Management (LinkedIn)</td><td class="desc">Respuesta DM + comentarios · lunes a viernes, horario laboral</td><td class="price" colspan="2" style="text-align:right">$150.000</td></tr>
-        </tbody>
-      </table>
-      <p class="table-note">* Valores CLP + IVA</p>
+      <div class="mode-toggle" role="tablist" aria-label="Modalidad de precio">
+        <button class="mode-btn active" data-mode="produccion">Con producción</button>
+        <button class="mode-btn" data-mode="remoto">Remoto</button>
+      </div>
+      <p class="table-note" id="modeHint" style="margin:0 0 30px 0;">Grabamos y fotografiamos nosotros mismos.</p>
+
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-name">Plan starter</div>
+          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="350.000" data-remoto="200.000">350.000</span></div>
+          <div class="plan-desc">2 reels, 2 posts, 2 historias · 6 contenidos total</div>
+          <a href="#contacto" class="plan-cta">Elegir plan</a>
+        </div>
+        <div class="plan-card featured">
+          <span class="plan-tag">Más pedido</span>
+          <div class="plan-name">Plan medium</div>
+          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="450.000" data-remoto="260.000">450.000</span></div>
+          <div class="plan-desc">2 reels, 4 posts, 6 historias · 12 contenidos total</div>
+          <a href="#contacto" class="plan-cta">Elegir plan</a>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Plan full</div>
+          <div class="plan-price"><span>$</span><span class="price-amount" data-produccion="600.000" data-remoto="340.000">600.000</span></div>
+          <div class="plan-desc">3 reels, 7 posts, 10 historias · 20 contenidos total</div>
+          <a href="#contacto" class="plan-cta">Elegir plan</a>
+        </div>
+      </div>
+
+      <div class="extras-grid">
+        <div class="extra-item">
+          <div><div class="extra-name">Post adicional</div><div class="extra-desc">Gráfico o carrusel — diseño + redacción copy</div></div>
+          <div class="extra-price" data-static="50.000">$50.000</div>
+        </div>
+        <div class="extra-item">
+          <div><div class="extra-name">Reel adicional</div><div class="extra-desc">Edición + música + subtítulos</div></div>
+          <div class="extra-price" data-produccion="75.000" data-remoto="45.000">$75.000</div>
+        </div>
+        <div class="extra-item">
+          <div><div class="extra-name">Community Management</div><div class="extra-desc">Respuesta DM + comentarios · lunes a viernes</div></div>
+          <div class="extra-price" data-static="150.000">$150.000</div>
+        </div>
+        <div class="extra-item">
+          <div><div class="extra-name">Plan único (LinkedIn)</div><div class="extra-desc">9 contenidos (posts)</div></div>
+          <div class="extra-price" data-static="500.000">$500.000</div>
+        </div>
+        <div class="extra-item">
+          <div><div class="extra-name">Community Management (LinkedIn)</div><div class="extra-desc">Respuesta DM + comentarios · lunes a viernes</div></div>
+          <div class="extra-price" data-static="150.000">$150.000</div>
+        </div>
+      </div>
+      <p class="table-note">* Valores CLP + IVA · Los ítems marcados con precio fijo no varían según la modalidad</p>
     </div>
 
     <!-- PRODUCCION -->
@@ -781,6 +869,34 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // RRSS price mode toggle (Con producción / Remoto)
+  const modeBtns = document.querySelectorAll('.mode-btn');
+  const modeHint = document.getElementById('modeHint');
+  const hints = {
+    produccion: 'Grabamos y fotografiamos nosotros mismos.',
+    remoto: 'Tú nos envías el material y nosotros editamos, redactamos el copy y programamos la publicación — ideal si estás fuera de La Serena.'
+  };
+  function applyMode(mode) {
+    document.querySelectorAll('.price-amount, .extra-price').forEach(el => {
+      const val = el.dataset[mode] || el.dataset.static;
+      if (!val) return;
+      el.classList.add('swap');
+      setTimeout(() => {
+        el.textContent = el.classList.contains('price-amount') ? val : '$' + val;
+        el.style.color = mode === 'remoto' && el.dataset.remoto ? 'var(--lavender)' : (el.classList.contains('extra-price') ? 'var(--lime)' : '');
+        el.classList.remove('swap');
+      }, 150);
+    });
+    if (modeHint) modeHint.textContent = hints[mode];
+  }
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyMode(btn.dataset.mode);
+    });
+  });
 
   // tarifario tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
